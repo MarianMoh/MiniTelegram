@@ -61,6 +61,7 @@ public class Chat {
     }
 
     public static class Timer implements Runnable {
+        private static final int SECONDS_IN_MINUTE = 60;
         private LocalTime localTime;
 
         public Timer() {
@@ -75,7 +76,8 @@ public class Chat {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Dream.takeRest(60 * 1000);
+                Dream.takeRest(SECONDS_IN_MINUTE * 1000);
+                localTime = LocalTime.now();
             }
         }
     }

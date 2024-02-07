@@ -175,7 +175,7 @@ public class MiniTelegram extends Messenger {
     }
 
     public void renameUser() {
-        deleteUser();
+        deleteUserFromFile();
         user.setName(UserInput.getNameFromUser());
         user.writeUserToFile();
     }

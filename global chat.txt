@@ -1,14 +1,7 @@
 
-Current time: 21:43:30.577532900
-Current time: 21:47
-Current time: 21:47
-Current time: 21:47
-Current time: 21:47
-Current time: 21:47
-Current time: 21:47
-Current time: 21:47
-Current time: 21:47
-Current time: 21:47
-Current time: 21:47
-Current time: 12:07
-Current time: 12:08
+Current time: 12:22
+mar: Hello!
+yulia: Hi!
+Current time: 12:23
+Yulia: Good morning!
+Current time: 12:24
