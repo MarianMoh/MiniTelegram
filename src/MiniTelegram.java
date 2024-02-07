@@ -177,6 +177,7 @@ public class MiniTelegram extends Messenger {
     @Override
     void authorize() {
         users = getAllUsers();
+        user.setLastTimeOnline(LocalDate.now());
 
         System.out.println("\n--Welcome to MiniTelegram--");
         String name = UserInput.getNameFromUser();
