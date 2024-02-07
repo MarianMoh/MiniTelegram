@@ -40,9 +40,7 @@ public class UserTest {
 
     @Test
     public void testReadInfoFromFile() {
-        try {
-            FileWriter fw = new FileWriter(user.getFileName(), false);
-            fw.close();
+        try (FileWriter fw = new FileWriter(user.getFileName(), false)) {
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -60,9 +58,7 @@ public class UserTest {
 
     @Test
     public void testReadFullInfoFromFile() {
-        try {
-            FileWriter fw = new FileWriter(user.getFileName(), false);
-            fw.close();
+        try (FileWriter fw = new FileWriter(user.getFileName(), false)) {
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -67,15 +67,12 @@ public class User {
      * Writes the user information to a file.
      */
     public void writeUserToFile() {
-        try {
-            FileWriter fw = new FileWriter(FILE_NAME, true);
-            BufferedWriter bw = new BufferedWriter(fw);
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME, true))) {
             bw.write("\n" + name
                     + "\n" + password
                     + "\n" + status
                     + "\n" + lastTimeOnline
                     + "\n");
-            bw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -118,10 +115,8 @@ public class User {
      * Deletes user information from the file.
      */
     public static void deleteInfoFromFile() {
-        try {
-            FileWriter fw = new FileWriter(FILE_NAME, false);
-            fw.close();
-        } catch (IOException e) {
+        try (FileWriter fw = new FileWriter(FILE_NAME, false)) {}
+        catch (IOException e) {
             e.printStackTrace();
         }
     }

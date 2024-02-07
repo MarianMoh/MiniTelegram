@@ -46,11 +46,8 @@ public class Chat {
      */
     public void writeMessage(User user) {
         String message = UserInput.getMessageFromUser(120);
-        try {
-            FileWriter fw = new FileWriter(FILE_NAME, true);
-            BufferedWriter bw = new BufferedWriter(fw);
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME, true))){
             bw.write("\n" + user.getName() + ": " + message);
-            bw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

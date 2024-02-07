@@ -5,8 +5,6 @@ yulia: Hi!
 Current time: 12:23
 Yulia: Good morning!
 Current time: 12:24
-Current time: 15:47
-Current time: 15:48
-Current time: 15:49
 Mar1k: Look at me!
 Current time: 15:50
+Current time: 16:41
