@@ -2,6 +2,15 @@ import java.io.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
+/**
+ * The User class represents a user in the system.
+ * It includes methods for user information management,
+ * such as writing to and reading from a file.
+ *
+ * @version 1.0
+ * @author Moh Marian
+ * @since 2024-2-7
+ */
 public class User {
     private static final String FILE_NAME = "users.txt";
     private String name;
@@ -50,6 +59,9 @@ public class User {
         this.lastTimeOnline = lastTimeOnline;
     }
 
+    /**
+     * Writes the user information to a file.
+     */
     public void writeUserToFile() {
         try {
             FileWriter fw = new FileWriter(FILE_NAME, true);
@@ -65,6 +77,12 @@ public class User {
         }
     }
 
+    /**
+     * Reads user information from a file.
+     *
+     * @param full Indicates whether to return the full information of the user.
+     * @return The user information read from the file.
+     */
     public static String readInfoFromFile(boolean full) {
         StringBuilder text = new StringBuilder();
 
@@ -92,6 +110,9 @@ public class User {
         return text.toString();
     }
 
+    /**
+     * Deletes user information from the file.
+     */
     public static void deleteInfoFromFile() {
         try {
             FileWriter fw = new FileWriter(FILE_NAME, false);

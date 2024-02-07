@@ -2,13 +2,33 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * The MiniTelegram class represents a simplified version of a messaging application.
+ * It includes various menu methods and methods for managing users and chats.
+ *
+ * @version 1.0
+ * @author Moh Marian
+ * @since 2024-2-7
+ */
+
 public class MiniTelegram extends Messenger {
     private User user;
     private ArrayList<User> users;
     private Chat chat;
+
+    /**
+     * Input saves a number from user.
+     */
     private transient int input;
+
+    /**
+     * Represents the timer for updating the chat messages.
+     */
     private transient Chat.Timer timer;
 
+    /**
+     * MiniTelegram() initializes objects and starts Thread Timer
+     */
     public MiniTelegram() {
         users = new ArrayList<>();
         users = getAllUsers();
@@ -45,6 +65,9 @@ public class MiniTelegram extends Messenger {
         this.chat = chat;
     }
 
+    /**
+     * Displays the main menu for navigating to other menus or exiting the application.
+     */
     @Override
     void mainMenu() {
         while (true) {
@@ -68,6 +91,9 @@ public class MiniTelegram extends Messenger {
         }
     }
 
+    /**
+     * Displays the user-specific menu for managing user settings and actions.
+     */
     @Override
     void userMenu() {
         while (true) {
@@ -92,6 +118,9 @@ public class MiniTelegram extends Messenger {
         }
     }
 
+    /**
+     * Displays the chat menu for interacting with chat rooms and messages.
+     */
     @Override
     void chatMenu() {
         while (true) {
@@ -117,6 +146,9 @@ public class MiniTelegram extends Messenger {
         }
     }
 
+    /**
+     * Displays the database menu for managing user data.
+     */
     @Override
     public void databaseMenu() {
         boolean isAdmin = user.getStatus().isAdmin() || checkIfAdmin();
@@ -139,6 +171,9 @@ public class MiniTelegram extends Messenger {
         }
     }
 
+    /**
+     * Authorizes the user before entering the main menu.
+     */
     @Override
     void authorize() {
         users = getAllUsers();
@@ -165,32 +200,46 @@ public class MiniTelegram extends Messenger {
     }
 
     /**
-     * work with user
+     * Displays user information.
      */
-
     public void userInfo() {
         System.out.print("\n-- User Info --");
         System.out.println(user);
         UserInput.getUserAction();
     }
 
+    /**
+     * Renames the user.
+     */
     public void renameUser() {
         deleteUserFromFile();
         user.setName(UserInput.getNameFromUser());
         user.writeUserToFile();
     }
 
+    /**
+     * Deletes the user.
+     */
     public void deleteUser() {
         deleteUserFromFile();
         authorize();
     }
 
+    /**
+     * Deletes the user from file.
+     */
     public void deleteUserFromFile() {
         users.remove(user);
         User.deleteInfoFromFile();
         users.forEach(User::writeUserToFile);
     }
 
+    /**
+     * Retrieves the user by name.
+     *
+     * @param name The name of the user to retrieve.
+     * @return The user with the specified name, or null if not found.
+     */
     public User getUserByName(String name) {
         return users.stream()
                 .filter(u -> u.getName().equals(name))
@@ -198,6 +247,11 @@ public class MiniTelegram extends Messenger {
                 .orElse(null);
     }
 
+    /**
+     * Checks if the user is an admin.
+     *
+     * @return True if the user is an admin, otherwise false.
+     */
     public boolean checkIfAdmin() {
         boolean isAdmin = false;
         System.out.print("\n\nEnter admin password (or 0 to exit)");
@@ -215,10 +269,21 @@ public class MiniTelegram extends Messenger {
         return isAdmin;
     }
 
+    /**
+     * Checks if the user is in the list of users.
+     *
+     * @param name The name of the user to check.
+     * @return True if the user is in the list, otherwise false.
+     */
     public boolean isUserInList(String name) {
         return users.stream().anyMatch(u -> u.getName().equals(name));
     }
 
+    /**
+     * Retrieves all users from the file.
+     *
+     * @return The list of users.
+     */
     public ArrayList<User> getAllUsers() {
         String info = User.readInfoFromFile(false);
         String[] lines = info.split("\n");
