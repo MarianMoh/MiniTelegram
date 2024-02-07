@@ -27,6 +27,10 @@ public class User {
         this.lastTimeOnline = LocalDate.now();
     }
 
+    public String getFileName() {
+        return FILE_NAME;
+    }
+
     public String getName() {
         return name;
     }
